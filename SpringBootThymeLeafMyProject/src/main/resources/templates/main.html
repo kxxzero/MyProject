@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<meta name="title" content="웹사이트">
+<meta name="description" content="웹사이트입니다.">
+<meta name="keywords" content="키워드,키워드,키워드">
+<meta property="og:title" content="웹사이트">
+<meta property="og:description" content="웹사이트입니다">
+<meta property="og:image" content="https://웹사이트/images/opengraph.png">
+<meta property="og:url" content="https://웹사이트">
+<link rel="stylesheet" href="../layout/css/setting.css">
+<link rel="stylesheet" href="../layout/css/plugin.css">
+<link rel="stylesheet" href="../layout/css/template.css">
+<link rel="stylesheet" href="../layout/css/common.css">
+<link rel="stylesheet" href="../layout/css/style.css">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=666e34535b94b665d2f33b3ee94a689a&libraries=services"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="../layout/js/setting.js"></script>
+<script src="../layout/js/plugin.js"></script>
+<script src="../layout/js/template.js"></script>
+<script src="../layout/js/common.js"></script>
+<script src="../layout/js/script.js"></script>
+<title>TripTravel</title>
+</head>
+<body>
+	<th:block th:include="main/header"></th:block>
+	<th:block th:include="${main_html}"></th:block>
+	<th:block th:include="main/footer"></th:block>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>체험 목록</title>
+</head>
+<body>
+<div class="glamping-N41" data-bid="pTltC8l3P7">
+  <div class="contents-inner">
+    <div class="contents-container container-md">
+      <div class="contents-top">
+      	<div class="textset content-tit">
+          <p class="textset-eu">Activity</p>
+          <h2 class="textset-tit">체험</h2>
+        </div>
+        <!-- <p class="contents-text">총 <strong th:text="${count}"></strong>개의 게시물이 있습니다.</p> -->
+        <div class="inputset inputset-border-bottom">
+	        <form method="post" action="/activity/find">
+	          <button type="sumbit" class="inputset-icon icon-right icon-search btn" aria-label="아이콘"></button>
+	          <input type="text" th:value="${title}" name="title" class="inputset-input form-control" placeholder="내용을 입력하세요" aria-label="내용" required>
+	        </form>
+        </div>
+      </div>
+      <div class="cardset-wrap">
+        <a th:each="vo,i:${list}" th:href="@{/activity/detail(no=${vo.no})}" class="cardset">
+          <figure class="cardset-figure">
+            <img th:src="${vo.poster}" alt="{vo.title}" class="cardset-img">
+          </figure>
+          <div class="cardset-body">
+            <h2 th:text="${vo.title}" class="cardset-tit"></h2>
+            <!-- <p class="cardset-txt">2023. 01. 01</p> -->
+          </div>
+        </a>
+      </div>
+      <nav class="pagiset pagiset-circ">
+<!--         <div class="pagiset-ctrl">
+          <a class="pagiset-link pagiset-first" href="javascript:void(0)">
+            <span class="visually-hidden">처음</span>
+          </a>
+        </div> -->
+        <div th:if="${startPage>1}" class="pagiset-ctrl">
+          <a th:href="@{/activity/list(page=${startPage-1}, title=${title})}" class="pagiset-link pagiset-prev">
+            <span class="visually-hidden">이전</span>
+          </a>
+        </div>
+        <div class="pagiset-list">
+          <a th:each="i:${#numbers.sequence(startPage, endPage)}" th:href="@{/activity/list(page=${i}, title=${title})}" th:text="${i}" th:class="${curpage==i?'pagiset-link active-fill':'pagiset-link'}"></a>
+        </div>
+        <div th:if="${endPage<totalpage}" class="pagiset-ctrl">
+          <a th:href="@{/activity/list(page=${endPage+1}, title=${title})}" class="pagiset-link pagiset-next">
+            <span class="visually-hidden">다음</span>
+          </a>
+        </div>
+<!--         <div class="pagiset-ctrl">
+          <a class="pagiset-link pagiset-last" href="javascript:void(0)">
+            <span class="visually-hidden">마지막</span>
+          </a>
+        </div> -->
+      </nav>
+    </div>
+  </div>
+</div>
+</body>
+</html>

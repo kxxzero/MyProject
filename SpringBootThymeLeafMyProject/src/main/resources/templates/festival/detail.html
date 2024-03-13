@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+let i=0;
+$(function(){
+	$('.updates').click(function(){
+		$('.ups').hide()
+		$('.updates').val('수정')
+		let no=$(this).attr("alt");
+		if(i==0) {
+			$(this).val("취소");
+			$('#u'+no).show()
+			i=1;
+		}
+		else {
+			$(this).val("수정");
+			$('#u'+no).hide()
+			i=0;
+		}
+	})
+})
+</script>
+</head>
+<body>
+<!-- [S]glamping-N23 -->
+<div class="glamping-N23" data-bid="xULtc8lrFO">
+  <div class="contents-inner">
+    <div class="contents-container container-md">
+      <div class="imageset">
+        <img class="imageset-img" th:src="${vo.poster}" th:title="${vo.title}">
+      </div>
+      <div class="textset textset-visual textset-hor">
+        <h2 class="textset-tit" th:text="${vo.title}"></h2>
+        <div class="textset-cont">
+          <p class="textset-desc" th:text="${vo.tag}"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- [E]glamping-N23 -->
+
+<!-- [S]glamping-N24 -->
+<div class="glamping-N24" data-bid="odLTC8lRJA">
+  <div class="contents-inner">
+    <div class="contents-container container-md">
+      <div class="textset">
+        <h2 class="textset-tit"><span th:text="${vo.title}"></span> 소개</h2>
+        <p class="textset-desc" th:text="${vo.cont}"></p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- [E]glamping-N24 -->
+
+<!-- [S]glamping-N27 -->
+<div class="glamping-N27" data-bid="rkltC8lrYo">
+  <div class="contents-inner">
+    <div class="contents-container container-md">
+      <h2 class="contents-tit">이용안내</h2>
+      <div class="contents-group">
+        <div class="tableset">
+          <div class="tableset-inner">
+            <!-- <h2 class="tableset-tit">이용시간</h2> -->
+            <table class="tableset-table table">
+              <colgroup>
+                <col>
+                <col>
+                <col>
+                <col>
+              </colgroup>
+              <thead class="thead-light thead-border-top">
+                <tr>
+                  <th scope="col">구분</th>
+                  <th scope="col">정보</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>주소</th>
+                  <td th:text="${vo.addr}"></td>
+                </tr>
+                <tr>
+                  <th>전화번호</th>
+                  <td th:text="${vo.phone}"></td>
+                </tr>
+                <tr>
+                  <th>운영시간</th>
+                  <td th:text="${vo.bhour}"></td>
+                </tr>
+                <tr>
+                  <th>요금</th>
+                  <td th:text="${vo.rate}"></td>
+                </tr>
+              </tbody>
+            </table>
+            <span class="tableset-desc">* 운영시간은 날씨와 계절에 따라 변동될 수 있습니다.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 카카오 지도 -->
+	<div id="map" style="width:100%;" class="container-md"></div>
+  </div>
+</div>
+<!-- [E]glamping-N27 -->
+
+<!-- [S]glamping-N29 -->
+<div class="glamping-N29" data-bid="HrLTc8lsbg">
+  <div class="contents-inner">
+    <div class="contents-container">
+<!--       <div class="textset container-md">
+        <h2 class="textset-tit"> 태양빛 속에서 살고 바다에서 수영하며 <br> 자유로운 공기를 마시세요 </h2>
+      </div> -->
+      <!-- <div class="contents-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="imageset">
+              <img class="imageset-img" src="../resources/images/img_glamping_N29_1.png" alt="이미지">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="imageset">
+              <img class="imageset-img" src="../resources/images/img_glamping_N29_2.png" alt="이미지">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="imageset">
+              <img class="imageset-img" src="../resources/images/img_glamping_N29_3.png" alt="이미지">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="imageset">
+              <img class="imageset-img" src="../resources/images/img_glamping_N29_4.png" alt="이미지">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="imageset">
+              <img class="imageset-img" src="../resources/images/img_glamping_N29_5.png" alt="이미지">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="imageset">
+              <img class="imageset-img" src="../resources/images/img_glamping_N29_6.png" alt="이미지">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="imageset">
+              <img class="imageset-img" src="../resources/images/img_glamping_N29_1.png" alt="이미지">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="imageset">
+              <img class="imageset-img" src="../resources/images/img_glamping_N29_2.png" alt="이미지">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="imageset">
+              <img class="imageset-img" src="../resources/images/img_glamping_N29_3.png" alt="이미지">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="imageset">
+              <img class="imageset-img" src="../resources/images/img_glamping_N29_4.png" alt="이미지">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="imageset">
+              <img class="imageset-img" src="../resources/images/img_glamping_N29_5.png" alt="이미지">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="imageset">
+              <img class="imageset-img" src="../resources/images/img_glamping_N29_6.png" alt="이미지">
+            </div>
+          </div>
+        </div>
+        <div class="contents-control container-md">
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div> -->
+      
+    </div>
+  </div>
+</div>
+<!-- [E]glamping-N29 -->
+
+<div class="">
+  <div class="contents-inner">
+    <div class="contents-container container-md">
+    	<table class="table">
+			<tr>
+				<td>
+					<table class="table" th:each="rvo:${list}">
+						<tr>
+							<td align="left" th:text="|◑ ${rvo.name} (${rvo.regdate})|"></td>
+							<td align="right">
+								<span th:if="${session.id==rvo.id}" class="inline">
+									<input type=button value="수정" class="btn-xs btn-danger updates" th:alt="${rvo.no}">
+									<a th:href="@{/reply/delete(fno=${rvo.fno},no=${rvo.no})}" class="btn btn-xs btn-success">삭제</a>
+		        						</span>
+		        					</td>
+		        				</tr>
+		        				<tr>
+				         	<td colspan="2">
+				          		<pre style="white-space: pre-wrap;background-color: white;border:none" th:text="${rvo.msg}"></pre>
+				         	</td>
+				        </tr>
+				        <tr th:id="|u${rvo.no}|" class="ups" style="display:none">
+				         	<td colspan="2">
+				             	<form method="post" action="/reply/update">
+				               		<input type="hidden" name="no" th:value="${rvo.no}">
+						       		<input type="hidden" name="fno" th:value="${vo.fno}">
+						       		<textarea rows="5" cols="60" style="float: left" required name="msg" th:text="${rvo.msg}"></textarea>
+						       		<input type=submit value="댓글수정" style="height:95px;width:100px;background-color: green">
+						      	</form>
+				         	</td>
+				        </tr>		
+					</table>
+				</td>
+			</tr>
+		</table>
+		
+		<div class="form-group" th:if="${session.id!=null}">
+		  <form method="post" action="/festival/insert">
+         	<div class="inputset inputset-lg inputset-label">
+	           <input type="hidden" name="no" th:value="${vo.no}">
+	           <label>
+	             <h6 class="inputset-tit">댓글</h6>
+	             <textarea name="msg" class="inputset-textarea textarea-keyup form-control" placeholder="댓글을 입력해주세요." required></textarea>
+	             <div class="inputset-langth">
+	               <span class="inputset-count">0</span>
+	               <span class="inputset-total">/4000</span>
+	             </div>
+	           </label>
+         	</div>
+	        <div class="form-btn">
+	           <button type="submit" class="btnset" value="댓글작성">댓글작성</button>
+	        </div>
+         </form>
+       </div>
+    </div>
+  </div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=666e34535b94b665d2f33b3ee94a689a&libraries=services"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
+
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+// 주소로 좌표를 검색합니다
+geocoder.addressSearch('[[${vo.addr}]]', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">[[${vo.title}]]</div>'
+        });
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    } 
+});    
+</script>
+</body>
+</html>
