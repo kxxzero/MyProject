@@ -15,5 +15,7 @@ public interface BoardService extends JpaRepository<Board, Integer>{
 			+ "ORDER BY no DESC LIMIT :start, 10", nativeQuery=true)
 	public List<Board> boardListData(@Param("start") int start);
 	
+	
+	
 	public Board findByNo(int no);
 }

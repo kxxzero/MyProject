@@ -1,4 +1,4 @@
-package com.sist.web.dao;
+package com.sist.web.service;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.sist.web.entity.Book;
 
-public interface BookDAO extends JpaRepository<Book, Integer>{
+public interface BookService extends JpaRepository<Book, Integer>{
 	@Query(value="SELECT * FROM book "
 			+ "WHERE title LIKE CONCAT('%',:title,'%') "
 			+ "ORDER BY no DESC LIMIT :start, 12", nativeQuery=true)
