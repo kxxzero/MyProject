@@ -16,35 +16,26 @@ import com.sist.web.service.BookService;
 @CrossOrigin(origins="*")
 public class BookRestController {
 	@Autowired
-	private BookService bService;
+	private BookService bkService;
 	
 	@GetMapping("/book/find_react")
 	public Map bookFind(int page, String title) {
 		int rowSize=12;
 		int start=(rowSize*page)-rowSize;
-		
-		List<Book> list=bService.bookFindList(start, title);
-		int totalpage=bService.bookFindTotalPage(title);
+		List<Book> list=bkService.bookFindList(start, title);
+		int totalpage=bkService.bookFindTotalPage(title);
 		Map map=new HashMap();
 		map.put("book_find", list);
 		map.put("totalpage", totalpage);
 		
-		/*Map map=new HashMap();
-		int totalpage=bService.bookFindTotalPage(title);
-		final int BLOCK=10;
-		int startPage=((page-1)/BLOCK*BLOCK)+1;
-		int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
-		if(endPage>totalpage) {
-			endPage=totalpage;
-		}
-		
-		map.put("curpage", page);
-		map.put("totalpage", totalpage);
-		map.put("startPage", startPage);
-		map.put("endPage", endPage);
-		map.put("list", list);*/
-		
 		return map;
+	}
+	
+	@GetMapping("/book/detail_react")
+	public Book bookDetail(int no) {
+		Book book=bkService.findByNo(no);
+		   
+		return book;
 	}
 	
 }

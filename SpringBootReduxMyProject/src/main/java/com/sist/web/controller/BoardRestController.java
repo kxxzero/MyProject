@@ -17,15 +17,15 @@ import com.sist.web.service.BoardService;
 @CrossOrigin(origins = "*")
 public class BoardRestController {
 	@Autowired
-	private BoardService bService;
+	private BoardService brService;
 	
 	@GetMapping("/board/list_react")
 	public Map boardList(int page) {
 		Map map=new HashMap();
 		int rowSize=10;
 		int start=(rowSize*page)-rowSize;
-		List<Board> list=bService.boardListData(start);
-		int count=(int)bService.count();
+		List<Board> list=brService.boardListData(start);
+		int count=(int)brService.count();
 		int totalpage=(int)(Math.ceil(count/10.0));
 		map.put("board_list", list);
 		map.put("totalpage", totalpage);
@@ -35,7 +35,7 @@ public class BoardRestController {
 	
 	@GetMapping("/board/total_react")
 	public String boardTotal() {
-		int count=(int)bService.count();
+		int count=(int)brService.count();
 		int totalpage=(int)(Math.ceil(count/10.0));
 		
 		return String.valueOf(totalpage);
@@ -43,7 +43,7 @@ public class BoardRestController {
 	
 	@GetMapping("board/detail_react")
 	public Board boardDetail(int no) {
-		Board vo=bService.findByNo(no);
+		Board vo=brService.findByNo(no);
 		
 		return vo;
 	}
@@ -53,7 +53,7 @@ public class BoardRestController {
 	public String boardInsert(Board vo) {
 		String result="";
 		try {
-			bService.save(vo);
+			brService.save(vo);
 			result="yes";  
 		} catch(Exception ex) {
 			result="no";
@@ -65,17 +65,17 @@ public class BoardRestController {
 	// 수정
 	@GetMapping("/board/update_react")
 	public Board boardUpdate(int no) {
-		Board vo=bService.findByNo(no);
+		Board vo=brService.findByNo(no);
 		return vo;
 	}
 	@PostMapping("/board/update_ok_react")
 	public String boardUpdateOk(Board vo) {
-		Board dbVO=bService.findByNo(vo.getNo());
+		Board dbVO=brService.findByNo(vo.getNo());
 		String result="";
 		if(vo.getPwd().equals(dbVO.getPwd())) {
 			result="yes";
 			vo.setHit(dbVO.getHit());
-			bService.save(vo);
+			brService.save(vo);
 		} else {
 			result="no";
 		}
@@ -86,10 +86,10 @@ public class BoardRestController {
 	@PostMapping("/board/delete_react")
 	public String boardDelete(int no,String pwd) {
 		String result="";
-		Board vo=bService.findByNo(no);
+		Board vo=brService.findByNo(no);
 		if(vo.getPwd().equals(pwd)) {
 			result="yes";
-			bService.delete(vo);
+			brService.delete(vo);
 		} else {
 			result="no";
 		}
