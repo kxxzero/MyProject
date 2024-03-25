@@ -7,8 +7,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.sist.web.entity.Board;
+import com.sist.web.entity.Tour;
 
-public interface BoardDAO extends JpaRepository<Board, Integer>{	
+public interface BoardDAO extends JpaRepository<Board, Integer>{
+	// 메인 출력
+	@Query(value="SELECT * "
+			+ "FROM board "
+			+ "ORDER BY no DESC "
+			+ "LIMIT 8", nativeQuery=true)
+	public List<Board> mainBoardData();
+	
 	@Query(value="SELECT * "
 			+ "FROM board "
 			+ "ORDER BY no DESC "

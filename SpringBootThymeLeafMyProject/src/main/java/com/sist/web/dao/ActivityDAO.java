@@ -15,7 +15,7 @@ public interface ActivityDAO extends JpaRepository<Activity, Integer>{
 	@Query(value="SELECT * "
 			+ "FROM activity "
 			+ "ORDER BY heart DESC "
-			+ "LIMIT 3", nativeQuery=true)
+			+ "LIMIT 1", nativeQuery=true)
 	public List<Activity> mainActivityData();
 	
 	// 목록 출력

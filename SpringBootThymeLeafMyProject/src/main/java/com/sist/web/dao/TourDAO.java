@@ -15,7 +15,7 @@ public interface TourDAO extends JpaRepository<Tour, Integer>{
 	@Query(value="SELECT * "
 			+ "FROM tour "
 			+ "ORDER BY heart DESC "
-			+ "LIMIT 3", nativeQuery=true)
+			+ "LIMIT 1", nativeQuery=true)
 	public List<Tour> mainTourData();
 	
 	// 목록 출력

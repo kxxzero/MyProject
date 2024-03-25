@@ -15,7 +15,7 @@ public interface FestivalDAO extends JpaRepository<Festival, Integer>{
 	@Query(value="SELECT * "
 			+ "FROM festival "
 			+ "ORDER BY heart DESC "
-			+ "LIMIT 3", nativeQuery=true)
+			+ "LIMIT 1", nativeQuery=true)
 	public List<Festival> mainFestivalData();
 	
 	// 목록 출력

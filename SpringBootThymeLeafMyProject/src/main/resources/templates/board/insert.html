@@ -5,6 +5,50 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<div class="basic-N24" data-bid="KElte73kTV">
+    <div class="contents-inner">
+        <div class="contents-container container-md">
+            <div class="form-group">
+                <div class="textset">
+                    <h2 class="textset-tit">작성하기</h2>
+                </div>
+                <form method="post" action="/board/insert_ok">
+	                <div class="inputset inputset-lg inputset-label">
+	                    <label>
+	                        <h6 class="inputset-tit">이름</h6>
+	                        <input type="text" value="name" class="inputset-input form-control" placeholder="이름을 입력해 주세요." required>
+	                    </label>
+	                </div>
+	                <div class="inputset inputset-lg inputset-label">
+	                    <label>
+	                        <h6 class="inputset-tit">제목</h6>
+	                        <input type="text" value="title" class="inputset-input form-control" placeholder="제목을 입력해 주세요." required>
+	                    </label>
+	                </div>
+	                <div class="inputset inputset-lg inputset-label">
+	                    <label>
+	                        <h6 class="inputset-tit">내용</h6>
+	                        <textarea value="content" class="inputset-textarea textarea-keyup form-control" placeholder="내용을 입력해 주세요." required></textarea>
+	                        <div class="inputset-langth">
+	                            <span class="inputset-count">0</span>
+	                            <span class="inputset-total">/4000</span>
+	                        </div>
+	                    </label>
+	                </div>
+	                <div class="inputset inputset-lg inputset-label">
+	                    <label>
+	                        <h6 class="inputset-tit">비밀번호</h6>
+	                        <input type="password" value="pwd" class="inputset-input form-control" placeholder="비밀번호를 입력해 주세요." required>
+	                    </label>
+	                </div>
+	                <div class="form-btn">
+	                    <button type="submit" value="글쓰기" class="btnset">작성하기</button>
+	                    <button type="button" value="취소" class="btnset" onclick="javascript:history.back()">취소</button>
+	                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

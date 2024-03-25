@@ -7,9 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sist.web.dao.TourDAO;
 import com.sist.web.entity.Tour;
+
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class TourController {
@@ -48,11 +53,40 @@ public class TourController {
 		return "main";
 	}
 	
+	@GetMapping("/tour/before_detail")
+	public String tour_before(int no, RedirectAttributes ra, HttpServletResponse response) {
+		// 쿠키에 저장 
+		Cookie cookie=new Cookie("tour"+no, String.valueOf(no));
+		// cookie는 저장 시 문자열만 저장이 가능 
+		cookie.setPath("/");
+		cookie.setMaxAge(60*60*24);
+		response.addCookie(cookie);
+		ra.addAttribute("no", no);
+   
+		return "redirect:../tour/detail?no="+no;
+	}
+	
 	@GetMapping("/tour/detail")
-	public String tour_detail(int no, Model model) {
+	public String tour_detail(int no, Model model, HttpServletRequest request) {
 		Tour vo=dao.findByNo(no);
 		model.addAttribute("vo", vo);
 		model.addAttribute("main_html", "tour/detail");
+		
+		String cookieName="tour"+no;
+	    String cookieValue=null;
+	    Cookie[] cookies=request.getCookies();
+	    if (cookies!=null) {
+	        for (Cookie cookie:cookies) {
+	            if (cookie.getName().equals(cookieName)) {
+	                cookieValue=cookie.getValue();
+	                break;
+	            }
+	        }
+	    }
+	    // 쿠키 값 사용
+	    if (cookieValue != null) {
+	        // 쿠키 값이 존재할 때 처리하는 내용 작성
+	    }
 		
 		return "main";
 	}

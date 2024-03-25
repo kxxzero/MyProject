@@ -78,7 +78,7 @@
 }
 
 /* glamping-N41 [pTltC8l3P7] */
-.glamping-N41 .contents-inner { padding: 10rem 2.4rem; }
+.glamping-N41 .contents-inner {min-height: 100vh; padding: 10rem 2.4rem; }
 .glamping-N41 .contents-top { display: flex; align-items: center; justify-content: space-between; }
 .glamping-N41 .contents-text { width: 50%; font-size: var(--fs-p2); line-height: var(--lh-p2); color: var(--text-color4); }
 .glamping-N41 .contents-text strong { color: var(--text-color1); }
@@ -255,18 +255,19 @@
 .glamping-N14 .contents-inner { padding: 8rem 2.4rem; }
 .glamping-N14 .cardset-wrap { flex-direction: column; }
 .glamping-N14 .cardset { width: 50%; padding-left: 11.4rem; }
-.glamping-N14 .cardset+.cardset { margin-top: 10rem; }
+.glamping-N14 .cardset+.cardset { margin-top: 0; }
 .glamping-N14 .cardset:nth-child(even) { align-self: flex-end; }
 .glamping-N14 .cardset-top { position: relative; }
 .glamping-N14 .cardset-top .cardset-name { display: inline-block; position: absolute; left: -0.8rem; top: 0; font-size: 8rem; line-height: 10.6rem; font-weight: 600; transform: rotate(90deg); transform-origin: top left; color: var(--text-color1); }
-.glamping-N14 .cardset-figure { height: 70rem; }
+.glamping-N14 .cardset-figure { height: 50rem; }
 .glamping-N14 .cardset-body { padding: 2rem 0; }
 .glamping-N14 .cardset-body .cardset-name { display: inline-block; width: 100%; margin-bottom: 3rem; font-size: var(--fs-h6); line-height: var(--lh-h6); text-align: right; color: var(--line-color3); }
 .glamping-N14 .cardset .cardset-tit+.cardset-desc { margin-top: 3rem; color: var(--text-color3); }
+.glamping-N14 .cardset.cardset-lg .cardset-tit{word-break: keep-all;}
 @media (max-width: 992px) {
  .glamping-N14 .contents-inner { padding: 5rem 2.4rem; }
  .glamping-N14 .cardset { width: 100%; padding-left: 0; }
- .glamping-N14 .cardset+.cardset { margin-top: 6rem; }
+ .glamping-N14 .cardset+.cardset { margin-top: 0; }
  .glamping-N14 .cardset-top .cardset-name { top: 2rem; left: 6.8rem; font-size: 3.2rem; line-height: 4.8rem; color: var(--text-color5); }
  .glamping-N14 .cardset-figure { height: 40rem; }
  .glamping-N14 .cardset-body { padding: 1.6rem 0; }
@@ -369,8 +370,20 @@
 }
 
 /* opilsol-N24 */
-.opilsol-N24 .contents-inner { padding: 10rem 2.4rem; }
+.opilsol-N24 .contents-inner {min-height: 100vh; padding: 10rem 2.4rem; }
 .opilsol-N24 .tableset{margin-top: 2rem}
+.opilsol-N24 .pagiset{margin-top: 6rem}
 @media (max-width: 992px) {
  .opilsol-N24 .contents-inner { padding: 5rem 2.4rem; }
+}
+
+/* basic-N24 [KElte73kTV] */
+.basic-N24 .contents-container { padding: 0; border: none; background: transparent}
+.basic-N24 .contents-inner { padding: 8rem 1.6rem; }
+.basic-N24 .form-group { max-width: 96rem; margin: 0 auto; }
+.basic-N24 .inputset.inputset-label .inputset-tit{font-size: 1.6rem; font-weight: 500}
+.basic-N24 .form-btn{text-align: center;}
+@media (max-width: 992px) {
+ .basic-N24 .contents-inner { padding: 5rem 1.6rem; }
+ .basic-N24 .contents-container { padding: 0; }
 }

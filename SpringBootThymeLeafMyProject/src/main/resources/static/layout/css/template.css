@@ -682,7 +682,7 @@ progress { vertical-align: baseline; }
 .inputset.inputset-label .inputset-tit { margin-bottom: 1.2rem; font-size: var(--fs-p1); line-height: var(--lh-p1); font-weight: 500; } 
 .inputset.inputset-label .inputset-tit span { margin-left: 0.4rem; font-size: var(--fs-p1); font-weight: 600; color: var(--danger); } 
 /* Input : Inputset Textarea */
-.inputset .inputset-textarea { position: relative; width: 100%; height: 22rem; padding: 1.6rem; font-size: var(--fs-p2); border-radius: 3rem; border: 1px solid var(--border-color); } 
+.inputset .inputset-textarea { position: relative; width: 100%; height: 22rem; padding: 1.6rem; font-size: var(--fs-p2); border: 1px solid var(--border-color); } 
 .inputset .inputset-langth { position: absolute; right: 2rem; bottom: 2rem; display: flex; align-items: center; font-size: var(--fs-p3); color: var(--text-color4); } 
 .inputset .inputset-textarea:hover { border-color: var(--line-color3); } 
 .inputset .inputset-textarea::placeholder { color: var(--text-color3); } 
@@ -720,7 +720,7 @@ progress { vertical-align: baseline; }
  .inputset.inputset-sm .inputset-icon.icon-right + .inputset-input { padding-right: calc(1.6rem + 2rem + 1.6rem); } 
  .inputset.inputset-round .inputset-input { padding: 0 1.6rem; } 
  .inputset.inputset-round.inputset-sm .inputset-input { padding: 0 1.2rem; } 
- .inputset .inputset-textarea { height: 18rem; border-radius: 2rem; } 
+ .inputset .inputset-textarea { height: 18rem; } 
  .inputset .inputset-langth { right: 0.8rem; bottom: 0.8rem; } 
  }
 

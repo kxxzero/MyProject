@@ -17,24 +17,6 @@
       </div>
       
       <div class="header-center">
-        <ul class="header-member">
-          <li>
-            <ul class="inline" th:if="${session.id==null}">
-				<li><input type="text" id="id" ref="id" v-model="id" size="15" placeholder="아이디"></li>
-				<li><input type="password" id="password" ref="pwd" v-model="pwd" size="15" placeholder="비밀번호"></li>
-				<li><input type="button" value="로그인" @click="login()">
-			</ul>
-          </li>
-          <li>
-          	<ul class="inline" th:if="${session.id!=null}">
-				<li><span th:text="${session.name}"></span>님 로그인 되었습니다.</li>
-				<li><input type="button" value="로그아웃" @click="logout()">
-			</ul>
-          </li>
-          <!-- <li>
-            <a href="javascript:void(0)">회원가입</a>
-          </li> -->
-        </ul>
         <ul class="header-gnblist">
           <li class="header-gnbitem">
             <a class="header-gnblink" href="#">
@@ -91,19 +73,38 @@
             <ul class="header-sublist">
               <li class="header-subitem">
                 <a class="header-sublink" href="/board/list">
-                  <span>공지사항</span>
+                  <span>자유게시판</span>
                 </a>
               </li>
             </ul>
           </li>
         </ul>
       </div>
-      
+
       <div class="header-right">
-        <div class="header-utils">
-          <a href="javascript:void(0);" class="btn-user header-utils-btn">
-            <img src="../images/icons/ico_user_white.svg" alt="유저 아이콘">
-          </a>
+     	<ul class="header-member">
+          <li>
+            <ul class="inline login" th:if="${session.id==null}">
+				<li><input type="text" id="id" ref="id" v-model="id" size="15" placeholder="아이디"></li>
+				<li><input type="password" id="password" ref="pwd" v-model="pwd" size="15" placeholder="비밀번호"></li>
+				<li><input type="button" value="로그인" @click="login()">
+			</ul>
+          </li>
+          <li>
+          	<ul class="inline logout" th:if="${session.id!=null}">
+				<li><span th:text="${session.name}"></span>님 로그인 되었습니다.</li>
+				<li><input type="button" value="로그아웃" @click="logout()">
+				<li><a href="javascript:void(0);" class="btn-user header-utils-btn">
+		        	<img src="../images/icons/ico_user_white.svg" alt="유저 아이콘">
+		        </a></li>				
+			</ul>
+          </li>
+          <!-- <li>
+            <a href="javascript:void(0)">회원가입</a>
+          </li> -->
+        </ul>
+        
+        <div class="header-utils">         
           <button class="btn-allmenu header-utils-btn">
             <img src="../images/icons/ico_menu_white.svg" alt="PC메뉴">
           </button>
@@ -121,11 +122,10 @@
       <div class="fullmenu-wrapper">
         <div class="fullmenu-head">
           <h4 class="fullmenu-title">
-            <a href="javascript:void(0)">
-              <img src="../images/img_logo_white.png" alt="로고">
-            </a>
+            <a href="javascript:void(0)">TripTravel</a>
           </h4>
-          <ul class="fullmenu-member">
+        </div>
+        <ul class="fullmenu-member">
             <li>
 	            <ul class="inline" th:if="${session.id==null}">
 					<li><input type="text" id="id" ref="id" v-model="id" size="15" placeholder="아이디"></li>
@@ -142,8 +142,7 @@
             <!-- <li>
               <a href="javascript:void(0)">회원가입</a>
             </li> -->
-          </ul>
-        </div>
+        </ul>
         <ul class="fullmenu-gnblist">
           <li class="fullmenu-gnbitem">
             <a class="fullmenu-gnblink" href="#">
@@ -200,7 +199,7 @@
             <ul class="fullmenu-sublist">
               <li class="fullmenu-subitem">
                 <a class="fullmenu-sublink" href="/board/list">
-                  <span>공지사항</span>
+                  <span>자유게시판</span>
                 </a>
               </li>
             </ul>
