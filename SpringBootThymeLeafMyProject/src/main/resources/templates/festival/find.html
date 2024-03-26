@@ -22,40 +22,29 @@
         </div>
       </div>
       <div class="cardset-wrap">
-        <a th:each="vo,i:${list}" th:href="@{/festival/detail(no=${vo.no})}" class="cardset">
+        <a th:each="vo, i:${list}" th:href="@{/festival/detail(no=${vo.no})}" class="cardset">
           <figure class="cardset-figure">
-            <img th:src="${vo.poster}" alt="{vo.title}" class="cardset-img">
+            <img th:src="${vo.poster}" alt="${vo.title}" class="cardset-img">
           </figure>
           <div class="cardset-body">
             <h2 th:text="${vo.title}" class="cardset-tit"></h2>
-            <!-- <p class="cardset-txt">2023. 01. 01</p> -->
           </div>
         </a>
       </div>
-      <nav class="pagiset pagiset-circ">
-<!--         <div class="pagiset-ctrl">
-          <a class="pagiset-link pagiset-first" href="javascript:void(0)">
-            <span class="visually-hidden">처음</span>
-          </a>
-        </div> -->
+      <nav class="pagiset pagiset-line">
         <div th:if="${startPage>1}" class="pagiset-ctrl">
-          <a th:href="@{/festival/list(page=${startPage-1}, title=${title})}" class="pagiset-link pagiset-prev">
+          <a th:href="@{/festival/find(page=${startPage-1}, title=${title})}" class="pagiset-link pagiset-prev">
             <span class="visually-hidden">이전</span>
           </a>
         </div>
         <div class="pagiset-list">
-          <a th:each="i:${#numbers.sequence(startPage, endPage)}" th:href="@{/festival/list(page=${i}, title=${title})}" th:text="${i}" th:class="${curpage==i?'pagiset-link active-fill':'pagiset-link'}"></a>
+          <a th:each="i:${#numbers.sequence(startPage, endPage)}" th:href="@{/festival/find(page=${i}, title=${title})}" th:text="${i}" th:class="${curpage==i?'pagiset-link active-fill':'pagiset-link'}"></a>
         </div>
         <div th:if="${endPage<totalpage}" class="pagiset-ctrl">
-          <a th:href="@{/festival/list(page=${endPage+1}, title=${title})}" class="pagiset-link pagiset-next">
+          <a th:href="@{/festival/find(page=${endPage+1}, title=${title})}" class="pagiset-link pagiset-next">
             <span class="visually-hidden">다음</span>
           </a>
         </div>
-<!--         <div class="pagiset-ctrl">
-          <a class="pagiset-link pagiset-last" href="javascript:void(0)">
-            <span class="visually-hidden">마지막</span>
-          </a>
-        </div> -->
       </nav>
     </div>
   </div>

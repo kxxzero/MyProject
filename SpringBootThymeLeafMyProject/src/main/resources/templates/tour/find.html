@@ -28,34 +28,23 @@
           </figure>
           <div class="cardset-body">
             <h2 th:text="${vo.title}" class="cardset-tit"></h2>
-            <!-- <p class="cardset-txt">2023. 01. 01</p> -->
           </div>
         </a>
       </div>
       <nav class="pagiset pagiset-line">
-<!--         <div class="pagiset-ctrl">
-          <a class="pagiset-link pagiset-first" href="javascript:void(0)">
-            <span class="visually-hidden">처음</span>
-          </a>
-        </div> -->
         <div th:if="${startPage>1}" class="pagiset-ctrl">
-          <a th:href="@{/tour/list(page=${startPage-1}, title=${title})}" class="pagiset-link pagiset-prev">
+          <a th:href="@{/tour/find(page=${startPage-1}, title=${title})}" class="pagiset-link pagiset-prev">
             <span class="visually-hidden">이전</span>
           </a>
         </div>
         <div class="pagiset-list">
-          <a th:each="i:${#numbers.sequence(startPage, endPage)}" th:href="@{/tour/list(page=${i}, title=${title})}" th:class="${curpage==i?'pagiset-link active-fill':'pagiset-link'}" th:text="${i}"></a>
+          <a th:each="i:${#numbers.sequence(startPage, endPage)}" th:href="@{/tour/find(page=${i}, title=${title})}" th:class="${curpage==i?'pagiset-link active-fill':'pagiset-link'}" th:text="${i}"></a>
         </div>
         <div th:if="${endPage<totalpage}" class="pagiset-ctrl">
-          <a th:href="@{/tour/list(page=${endPage+1}, title=${title})}" class="pagiset-link pagiset-next">
+          <a th:href="@{/tour/find(page=${endPage+1}, title=${title})}" class="pagiset-link pagiset-next">
             <span class="visually-hidden">다음</span>
           </a>
         </div>
-<!--         <div class="pagiset-ctrl">
-          <a class="pagiset-link pagiset-last" href="javascript:void(0)">
-            <span class="visually-hidden">마지막</span>
-          </a>
-        </div> -->
       </nav>
     </div>
   </div>

@@ -41,6 +41,7 @@ public class MainController {
 		List<Activity> aList=aDao.mainActivityData();
 		List<Board> bList=bDao.mainBoardData();
 		
+		// 쿠키
 		Cookie[] cookies=request.getCookies();
 		List<Tour> cList=new ArrayList<Tour>();
 		int k=0;

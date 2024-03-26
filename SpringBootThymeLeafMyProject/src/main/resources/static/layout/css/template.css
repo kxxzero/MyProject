@@ -2,6 +2,7 @@
 
 /* Web Font */
 @import url('https://cdn.jsdelivr.net/gh/openfieldth/temha-icon/v1.2.0/Temha-Icon.css');
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
@@ -44,9 +45,9 @@
   --line-color2: #F0F0F6;
   --line-color3: #E5E5EC;
   --line-color4: #242424;
-  --ff: "Roboto", "Noto Sans KR", sans-serif;
-  --ff-ko: "Noto Sans KR", sans-serif;
-  --ff-en: "Roboto", sans-serif;
+  --ff: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --ff-ko: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --ff-en: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   --ff-mo: monospace;
   --ff-ico: "Temha-Icon";
   --fs-h1: 5.2rem;
@@ -108,7 +109,7 @@
 *::before,
 *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { font-size: 62.5%; /* 16px * 0.625 = 10px */ }
-body { margin: 0; font-family: var(--ff); font-weight: 400; font-size: var(--fs-p3); line-height: var(--lh-p3); letter-spacing: var(--letter-spacing); color: var(--body-color); background-color: var(--body-bg); -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+body { margin: 0; font-family: var(--ff); font-weight: 400; font-size: var(--fs-p3); line-height: var(--lh-p3); letter-spacing: var(--letter-spacing); color: var(--body-color); background-color: var(--body-bg); -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); overflow-x:hidden}
 hr { margin: 1rem 0; color: inherit; border: 0; border-top: 1px solid; opacity: 0.25; }
 abbr[title] { -webkit-text-decoration: underline dotted; text-decoration: underline dotted; cursor: help; -webkit-text-decoration-skip-ink: none; text-decoration-skip-ink: none; }
 address { font-style: normal; line-height: inherit; }
@@ -159,7 +160,7 @@ input,
 button,
 select,
 optgroup,
-textarea { margin: 0; font-family: inherit; font-size: inherit; line-height: inherit; }
+textarea { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;; font-size: inherit; line-height: inherit; }
 button,
 select { text-transform: none; }
 [role="button"] { cursor: pointer; }
@@ -372,12 +373,42 @@ progress { vertical-align: baseline; }
  .videoset .videoset-play { width: 6rem; height: 6rem; } 
  }
 
- /* Badge : Badgeset */
- .badgeset { display: inline-block; font-size: var(--fs-p3); line-height: 2rem; color: var(--text-color3); font-weight: 400; } 
- .badgeset.badgeset-fill { padding: 0.4rem 1.2rem; background-color: var(--primary); color: var(--text-color5); } 
- .badgeset.badgeset-fill.badgeset-black { background-color: var(--line-color4); } 
- .badgeset.badgeset-round { border-radius: 6rem; } 
- .badgeset-wrap .badgeset + .badgeset { margin-left: 10px; } 
+
+/* Badge : Badgeset */ 
+.badgeset.badgeset-fill { padding: 0.4rem 1.2rem; background-color: var(--primary); color: var(--text-color5); } 
+.badgeset.badgeset-fill.badgeset-black { background-color: var(--line-color4); } 
+.badgeset.badgeset-round { border-radius: 6rem; } 
+.badgeset-wrap .badgeset + .badgeset { margin-left: 10px; } 
+ 
+/* Badgeset */
+.badgeset { display: inline-block; position: relative; min-width: 1.6rem; min-height: 1.6rem; font-size: 1.4rem; font-weight: 400;} 
+.badgeset .badgeset-tit { font-weight: 700; } 
+.badgeset .badgeset-text { display: inline-block; max-width: 10rem; max-height: 100%; padding: 0 .6rem; line-height: 1.6rem; border-radius: .2rem; font-size: 1.1rem; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; color: var(--text-color5); background-color: var(--primary); } 
+/* Badgeset : Position */
+.badgeset.badgeset-position .badgeset-text { position: absolute !important; z-index: 1; } 
+.badgeset.badgeset-top-right .badgeset-text { top: 0; right: 0; } 
+.badgeset.badgeset-top-left .badgeset-text { top: 0; left: 0; } 
+.badgeset.badgeset-bottom-right .badgeset-text { bottom: 0; right: 0; } 
+.badgeset.badgeset-bottom-left .badgeset-text { bottom: 0; left: 0; } 
+/* Badgeset : Round */
+.badgeset.badgeset-round .badgeset-text { border-radius: .9rem; background-color: var(--primary); } 
+/* Badgeset : Circle */
+.badgeset.badgeset-circle .badgeset-text { min-width: 1.6rem; max-width: 2rem; height: 1.6rem; max-height: 2rem; padding: 0; border-radius: 100% !important; font-size: 1rem; font-weight: 500; } 
+/* Badgeset : Circle Border */
+.badgeset.badgeset-circle-border .badgeset-text { width: 1.6rem; height: 1.6rem; border-radius: 100%; border: 2px solid var(--white); } 
+.badgeset.badgeset-circle-border.badgeset-top-right .badgeset-text { top: -.8rem !important; right: -.8rem !important; } 
+.badgeset.badgeset-circle-border.badgeset-top-left .badgeset-text { top: -.8rem !important; left: -.8rem !important; } 
+/* Badgeset : Round */
+.badgeset.badgeset-round .badgeset-text { border-radius: .9rem; background-color: var(--primary); } 
+/* Badgeset : Line */
+.badgeset.badgeset-line .badgeset-text { background-color: var(--white) !important; border: 1px solid var(--primary); } 
+.badgeset.badgeset-line .badgeset-text { color: var(--text-color1); } 
+/* Badgeset : Tag */
+.badgeset.badgeset-tag { height: 2.8rem; } 
+.badgeset.badgeset-tag .badgeset-text { max-width: 20rem; padding: 0.5rem 1rem; font-size: var(--fs-p4); line-height: 1.8rem; color: var(--text-color3); } 
+.badgeset.badgeset-tag.badgeset-round .badgeset-text { border-radius: 0.6rem; } 
+.badgeset.badgeset-tag.badgeset-line .badgeset-text { border-color: var(--border-color); }  
+
 
 /* ========== */
 /* Button : Btnset */

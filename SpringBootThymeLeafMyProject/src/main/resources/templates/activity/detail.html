@@ -36,7 +36,11 @@ $(function(){
       <div class="textset textset-visual textset-hor">
         <h2 class="textset-tit" th:text="${vo.title}"></h2>
         <div class="textset-cont">
-          <p class="textset-desc" th:text="${vo.tag}"></p>
+          <div class="contents-badge-group">
+            <div th:each="tag:${tagList}" class="badgeset badgeset-tag badgeset-round badgeset-line">
+              <span th:text="${tag}" class="badgeset-text"></span>
+            </div>
+           </div>
         </div>
       </div>
     </div>
@@ -113,69 +117,14 @@ $(function(){
 <div class="glamping-N29" data-bid="HrLTc8lsbg">
   <div class="contents-inner">
     <div class="contents-container">
-<!--       <div class="textset container-md">
+	<!-- <div class="textset container-md">
         <h2 class="textset-tit"> 태양빛 속에서 살고 바다에서 수영하며 <br> 자유로운 공기를 마시세요 </h2>
       </div> -->
       <div class="contents-swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
+          <div th:each="deImage:${deList}" class="swiper-slide">
             <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_1.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_2.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_3.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_4.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_5.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_6.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_1.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_2.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_3.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_4.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_5.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_6.png" alt="이미지">
+              <img th:src="${deImage}" class="imageset-img">
             </div>
           </div>
         </div>
@@ -192,7 +141,8 @@ $(function(){
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        /* center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표 */
+        center: new kakao.maps.LatLng(35.1796, 129.0750),
         level: 3 // 지도의 확대 레벨
     };  
 

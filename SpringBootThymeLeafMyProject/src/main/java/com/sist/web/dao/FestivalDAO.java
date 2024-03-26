@@ -30,7 +30,7 @@ public interface FestivalDAO extends JpaRepository<Festival, Integer>{
 			+ "FROM festival", nativeQuery=true)
 	public int festivalRowCount();
 	
-	// 찾기
+	// 상세 정보
 	public Festival findByNo(int no);
 	
 	// 검색
@@ -40,7 +40,7 @@ public interface FestivalDAO extends JpaRepository<Festival, Integer>{
 			+ "LIMIT :start, 12", nativeQuery=true)
 	public List<Festival> festivalFindData(@Param("start") Integer start, @Param("title") String title);
 	
-	// 검색 페이지
+	// 검색 총 페이지
 	@Query(value="SELECT CEIL(COUNT(*)/12.0) "
 			+ "FROM festival "
 			+ "WHERE title LIKE CONCAT('%',:title,'%')", nativeQuery=true)

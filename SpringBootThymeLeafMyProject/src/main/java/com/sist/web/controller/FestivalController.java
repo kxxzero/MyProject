@@ -1,5 +1,6 @@
 package com.sist.web.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,7 @@ public class FestivalController {
 		int rowSize=12;
 		int start=(rowSize*curpage)-rowSize;
 		List<Festival> list=dao.festivalListData(start);
-		int count=dao.festivalRowCount();
-		int totalpage=(int)(Math.ceil(count/12.0));
+		int totalpage=dao.festivalRowCount();
 		
 		final int BLOCK=10;
 		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
@@ -41,7 +41,6 @@ public class FestivalController {
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("list", list);
-		model.addAttribute("count", count);
 		
 		model.addAttribute("main_html", "festival/list");
 		
@@ -51,7 +50,14 @@ public class FestivalController {
 	@GetMapping("/festival/detail")
 	public String festival_detail(int no, Model model) {
 		Festival vo=dao.findByNo(no);
+		
+		// 상세 이미지 URL들을 ^로 분리하여 리스트에 저장
+	    List<String> deList=Arrays.asList(vo.getDeimage().split("\\^"));
+	    List<String> tagList=Arrays.asList(vo.getTag().split(" "));
+		
 		model.addAttribute("vo", vo);
+		model.addAttribute("deList", deList);
+	    model.addAttribute("tagList", tagList);
 		model.addAttribute("main_html", "festival/detail");
 		
 		return "main";
@@ -66,7 +72,7 @@ public class FestivalController {
 			page="1";
 		}
 		int curpage=Integer.parseInt(page);
-		int rowSize=20;
+		int rowSize=12;
 		int start=(rowSize*curpage)-rowSize;
 		List<Festival> list=dao.festivalFindData(start, title);
 		int totalpage=dao.festivalFindTotalPage(title);
@@ -84,6 +90,7 @@ public class FestivalController {
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("list", list);
 		model.addAttribute("title", title);
+		
 		model.addAttribute("main_html", "festival/find");
 		return "main";
 	}

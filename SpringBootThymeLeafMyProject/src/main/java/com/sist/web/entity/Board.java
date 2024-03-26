@@ -3,6 +3,8 @@ package com.sist.web.entity;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -27,6 +29,7 @@ hit int
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+//@DynamicUpdate // update 시 제외
 public class Board {
 	@Id
 	private int no;
@@ -44,6 +47,6 @@ public class Board {
 	
 	@PrePersist
 	public void regdate() {
-		this.regdate=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+		this.regdate=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	}
 }

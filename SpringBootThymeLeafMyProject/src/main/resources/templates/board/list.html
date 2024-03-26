@@ -32,10 +32,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr th:each="vo:${list}">
                     <td class="number" th:text="${vo.no}"></td>
                     <td>
-                      <a href="#" th:text="${vo.subject}"></a>
+                      <a th:href="@{/board/detail(no=${vo.no})}" th:text="${vo.subject}"></a>
                     </td>
                     <td th:text="${vo.name}"></td>
                     <td class="last-child" th:text="${vo.regdate}">2023.01.01</td>
@@ -45,12 +45,7 @@
               </table>
             </div>
           </div>
-          <nav class="pagiset pagiset-circ">
-            <!-- <div class="pagiset-ctrl">
-              <a class="pagiset-link pagiset-first" href="javascript:void(0)">
-                <span class="visually-hidden">처음</span>
-              </a>
-            </div> -->
+          <nav class="pagiset pagiset-line">
             <div th:if="${startPage>1}" class="pagiset-ctrl">
               <a th:href="@{/board/list(page=${startPage-1})}" class="pagiset-link pagiset-prev">
                 <span class="visually-hidden">이전</span>
@@ -64,11 +59,6 @@
                 <span class="visually-hidden">다음</span>
               </a>
             </div>
-            <!-- <div class="pagiset-ctrl">
-              <a class="pagiset-link pagiset-last" href="javascript:void(0)">
-                <span class="visually-hidden">마지막</span>
-              </a>
-            </div> -->
           </nav>
       </div>
     </div>

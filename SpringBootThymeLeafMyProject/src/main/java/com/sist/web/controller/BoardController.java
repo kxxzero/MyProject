@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sist.web.dao.BoardDAO;
 import com.sist.web.entity.Board;
+import com.sist.web.entity.Festival;
 
 @Controller
 public class BoardController {
@@ -64,8 +66,72 @@ public class BoardController {
 	}
 	
 	// 상세보기
+	@GetMapping("/board/detail")
+	public String board_detail(int no, Model model) {
+		Board vo=dao.findByNo(no);
+		vo.setHit(vo.getHit()+1);
+		model.addAttribute("vo", vo);
+		model.addAttribute("main_html", "board/detail");
+		
+		return "main";
+	}
+	
+	
 	// 수정
+	@GetMapping("/board/update")
+	public String board_update(int no, Model model) {
+		Board vo=dao.findByNo(no);
+		model.addAttribute("vo", vo);
+		
+		return "board/update";
+	}
+	
 	// 실제 수정 => redirect => detail 보여주기
+	@PostMapping("/board/update_ok")
+	@ResponseBody
+	public String board_update_ok(Board vo) {
+		String result="";
+		Board en=dao.findByNo(vo.getNo());
+		if(en.getPwd().equals(vo.getPwd())) {
+			result="<script>"
+					+"location.href=\"/board/detail?no="+vo.getNo()+"\""
+					+"</script>";
+			   
+			dao.save(vo);
+		} else {
+			result="<script>"
+					+"alert(\"비밀번호가 일치하지 않습니다.\");"
+					+"history.back();"
+					+"</script>";
+		}
+		return result;
+	}
+	
 	// 삭제
+	@GetMapping("/board/delete")
+	public String board_delete(int no, Model model) {
+		model.addAttribute("no", no);
+		
+		return "board/delete";
+	}
+	
 	// 실제 삭제 => redirect => list 보여주기
+	@PostMapping("/board/delete_ok")
+	@ResponseBody
+	public String board_delete_ok(int no, String pwd) {
+		String result="";
+		Board vo=dao.findByNo(no);
+		if(pwd.equals(vo.getPwd())) {
+			result="<script>"
+					+"location.href=\"/board/list\""
+					+"</script>";
+			dao.delete(vo);
+		} else {
+			result="<script>"
+					+"alert(\"비밀번호가 일치하지 않습니다.\");"
+					+"history.back();"
+					+"</script>";
+		}
+		return result;
+	}
 }

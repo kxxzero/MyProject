@@ -10,25 +10,26 @@
         <div class="contents-container container-md">
             <div class="form-group">
                 <div class="textset">
-                    <h2 class="textset-tit">작성하기</h2>
+                    <h2 class="textset-tit">수정하기</h2>
                 </div>
-                <form method="post" action="/board/insert_ok">
+                <form method="post" action="/board/update_ok">
 	                <div class="inputset inputset-lg inputset-label">
 	                    <label>
 	                        <h6 class="inputset-tit">이름</h6>
-	                        <input type="text" name="name" class="inputset-input form-control" placeholder="이름을 입력해 주세요." required>
+	                        <input type="hidden" name="no" th:value="${vo.no}">
+	                        <input type="text" th:value="${vo.name}" name="name" class="inputset-input form-control" placeholder="이름을 입력해 주세요." required>
 	                    </label>
 	                </div>
 	                <div class="inputset inputset-lg inputset-label">
 	                    <label>
 	                        <h6 class="inputset-tit">제목</h6>
-	                        <input type="text" name="subject" class="inputset-input form-control" placeholder="제목을 입력해 주세요." required>
+	                        <input type="text" th:value="${vo.subject}" name="subject" class="inputset-input form-control" placeholder="제목을 입력해 주세요." required>
 	                    </label>
 	                </div>
 	                <div class="inputset inputset-lg inputset-label">
 	                    <label>
 	                        <h6 class="inputset-tit">내용</h6>
-	                        <textarea name="content" class="inputset-textarea textarea-keyup form-control" placeholder="내용을 입력해 주세요." required></textarea>
+	                        <textarea name="content" th:text="${vo.content}" class="inputset-textarea textarea-keyup form-control" placeholder="내용을 입력해 주세요." required></textarea>
 	                        <div class="inputset-langth">
 	                            <span class="inputset-count">0</span>
 	                            <span class="inputset-total">/4000</span>

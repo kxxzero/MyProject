@@ -36,7 +36,11 @@ $(function(){
       <div class="textset textset-visual textset-hor">
         <h2 class="textset-tit" th:text="${vo.title}"></h2>
         <div class="textset-cont">
-          <p class="textset-desc" th:text="${vo.tag}"></p>
+          <div class="contents-badge-group">
+            <div th:each="tag:${tagList}" class="badgeset badgeset-tag badgeset-round badgeset-line">
+              <span th:text="${tag}" class="badgeset-text"></span>
+            </div>
+           </div>
         </div>
       </div>
     </div>
@@ -113,69 +117,14 @@ $(function(){
 <div class="glamping-N29" data-bid="HrLTc8lsbg">
   <div class="contents-inner">
     <div class="contents-container">
-<!--       <div class="textset container-md">
+	<!-- <div class="textset container-md">
         <h2 class="textset-tit"> 태양빛 속에서 살고 바다에서 수영하며 <br> 자유로운 공기를 마시세요 </h2>
       </div> -->
-      <!-- <div class="contents-swiper">
+      <div class="contents-swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
+          <div th:each="deImage:${deList}" class="swiper-slide">
             <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_1.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_2.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_3.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_4.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_5.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_6.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_1.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_2.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_3.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_4.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_5.png" alt="이미지">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imageset">
-              <img class="imageset-img" src="../resources/images/img_glamping_N29_6.png" alt="이미지">
+              <img th:src="${deImage}" class="imageset-img">
             </div>
           </div>
         </div>
@@ -183,74 +132,76 @@ $(function(){
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
-      </div> -->
-      
+      </div>
     </div>
   </div>
 </div>
 <!-- [E]glamping-N29 -->
 
-<div class="">
+<div class="reply">
   <div class="contents-inner">
     <div class="contents-container container-md">
-    	<table class="table">
-			<tr>
-				<td>
-					<table class="table" th:each="rvo:${list}">
-						<tr>
-							<td align="left" th:text="|◑ ${rvo.name} (${rvo.regdate})|"></td>
-							<td align="right">
-								<span th:if="${session.id==rvo.id}" class="inline">
-									<input type=button value="수정" class="btn-xs btn-danger updates" th:alt="${rvo.no}">
-									<a th:href="@{/reply/delete(fno=${rvo.fno},no=${rvo.no})}" class="btn btn-xs btn-success">삭제</a>
-		        						</span>
-		        					</td>
-		        				</tr>
-		        				<tr>
-				         	<td colspan="2">
-				          		<pre style="white-space: pre-wrap;background-color: white;border:none" th:text="${rvo.msg}"></pre>
-				         	</td>
-				        </tr>
-				        <tr th:id="|u${rvo.no}|" class="ups" style="display:none">
-				         	<td colspan="2">
-				             	<form method="post" action="/reply/update">
-				               		<input type="hidden" name="no" th:value="${rvo.no}">
-						       		<input type="hidden" name="fno" th:value="${vo.fno}">
-						       		<textarea rows="5" cols="60" style="float: left" required name="msg" th:text="${rvo.msg}"></textarea>
-						       		<input type=submit value="댓글수정" style="height:95px;width:100px;background-color: green">
-						      	</form>
-				         	</td>
-				        </tr>		
-					</table>
-				</td>
-			</tr>
-		</table>
-		
-		<div class="form-group" th:if="${session.id!=null}">
-		  <form method="post" action="/festival/insert">
-         	<div class="inputset inputset-lg inputset-label">
-	           <input type="hidden" name="no" th:value="${vo.no}">
-	           <label>
-	             <h6 class="inputset-tit">댓글</h6>
-	             <textarea name="msg" class="inputset-textarea textarea-keyup form-control" placeholder="댓글을 입력해주세요." required></textarea>
-	             <div class="inputset-langth">
-	               <span class="inputset-count">0</span>
-	               <span class="inputset-total">/4000</span>
-	             </div>
-	           </label>
-         	</div>
-	        <div class="form-btn">
-	           <button type="submit" class="btnset" value="댓글작성">댓글작성</button>
-	        </div>
-         </form>
-       </div>
+      <table class="table">
+        <tr th:each="rvo:${list}">
+          <td>
+            <table class="table">
+              <tr>
+                <td align="left" th:text="|◑ ${rvo.name} (${rvo.regdate})|"></td>
+                <td align="right">
+                  <span th:if="${session.id==rvo.id}" class="inline">
+                    <input type="button" value="수정" class="btn-xs btn-danger updates" th:alt="${rvo.no}">
+                    <a th:href="@{/reply/delete(fno=${rvo.fno},no=${rvo.no})}" class="btn btn-xs btn-success">삭제</a>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <pre style="white-space: pre-wrap;background-color: white;border:none" th:text="${rvo.msg}"></pre>
+                </td>
+              </tr>
+              <tr th:id="|u${rvo.no}|" class="ups" style="display:none">
+                <td colspan="2">
+                  <form method="post" action="/reply/update">
+                    <input type="hidden" name="no" th:value="${rvo.no}">
+                    <input type="hidden" name="fno" th:value="${vo.fno}">
+                    <textarea rows="5" cols="60" style="float: left" required name="msg" th:text="${rvo.msg}"></textarea>
+                    <input type="submit" value="댓글수정" style="height:95px;width:100px;background-color: green">
+                  </form>
+                </td>
+              </tr>      
+            </table>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="form-group" th:if="${session.id!=null}">
+        <form method="post" action="/festival/insert">
+          <div class="inputset inputset-lg inputset-label">
+            <input type="hidden" name="no" th:value="${vo.no}">
+            <label>
+              <h6 class="inputset-tit">댓글</h6>
+              <textarea name="msg" class="inputset-textarea textarea-keyup form-control" placeholder="댓글을 입력해주세요." required></textarea>
+              <div class="inputset-langth">
+                <span class="inputset-count">0</span>
+                <span class="inputset-total">/4000</span>
+              </div>
+            </label>
+          </div>
+          <div class="form-btn">
+            <button type="submit" class="btnset" value="댓글작성">댓글작성</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
+</div>
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=666e34535b94b665d2f33b3ee94a689a&libraries=services"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        /* center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표 */
+        center: new kakao.maps.LatLng(35.1796, 129.0750),
         level: 3 // 지도의 확대 레벨
     };  
 
