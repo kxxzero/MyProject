@@ -34,8 +34,8 @@ public class Board {
 	
 	private int hit;
   
-  @PrePersist
-  public void regdate() {
-	  this.regdate=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-  }
+	@PrePersist
+	public void regdate() {
+		this.regdate=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+	}
 }

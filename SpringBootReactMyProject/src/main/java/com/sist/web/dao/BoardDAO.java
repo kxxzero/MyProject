@@ -17,5 +17,5 @@ public interface BoardDAO extends JpaRepository<Board, Integer>{
 	@Query(value="SELECT CEIL(COUNT(*)/10.0) FROM board", nativeQuery=true)
 	public int boardListTotalPage();
 	
-	public Board findNo(int no);
+	public Board findByNo(int no);
 }

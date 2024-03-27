@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sist.web.dao.BoardDAO;
 import com.sist.web.entity.Board;
-import com.sist.web.entity.Book;
 
 @RestController
 @CrossOrigin(origins = "*")
