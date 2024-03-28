@@ -1,43 +1,55 @@
 package com.sist.web.controller;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sist.web.dao.MovieDAO;
+import com.sist.web.entity.Movie;
+
 @RestController
 @CrossOrigin(origins = "*")
 public class MovieRestController {
-	@GetMapping("/movie/movie_boot")
-	public String movie_data(int no) {
-		String site = "";
-		if (no == 1) {
-			site = "searchMainDailyBoxOffice.do";
-		} else if (no == 2) {
-			site = "searchMainRealTicket.do";
-		} else if (no == 3) {
-			site = "searchMainDailySeatTicket.do";
+	@Autowired
+	private MovieDAO dao;
+
+	@GetMapping("/movie/list_react")
+	public List<Movie> movieListData() {
+		List<Movie> list = dao.movieMainData();
+
+		return list;
+	}
+
+	@GetMapping("/movie/find_react")
+	public Map movieFindData(int page, String subject) {
+		int rowSize=20;
+		int start=(rowSize*page)-rowSize;
+		List<Movie> list=dao.movieFindData(start, subject);
+		Map map=new HashMap();
+		int totalpage=dao.movieFindTotalPage(subject);
+		final int BLOCK=10;
+		int startPage=((page-1)/BLOCK*BLOCK)+1;
+		int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
+		if (endPage>totalpage) {
+			endPage=totalpage;
 		}
-		String strUrl = "https://www.kobis.or.kr/kobis/business/main/" + site;
-		String result = "";
-		try {
-			// Document doc=Jsop.connection().get()
-			URL url = new URL(strUrl);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			if (conn != null) {
-				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-				while (true) {
-					String data = br.readLine();
-					if (data == null)
-						break;
-					result += data;
-				}
-			}
-		} catch (Exception ex) {}
-		return result;
+		map.put("curpage", page);
+		map.put("totalpage", totalpage);
+		map.put("startPage", startPage);
+		map.put("endPage", endPage);
+		map.put("list", list);
+
+		return map;
+	}
+
+	@GetMapping("movie/find_total_react")
+	public String movieFindTotalPage(String subject) {
+		int total=dao.movieFindTotalPage(subject);
+		return String.valueOf(total);
 	}
 }

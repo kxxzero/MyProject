@@ -9,29 +9,29 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sist.web.dao.MusicDAO;
-import com.sist.web.entity.Music;
+import com.sist.web.dao.ExhibitionDAO;
+import com.sist.web.entity.Exhibition;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class MusicRestController {
+public class ExhibitionRestController {
 	@Autowired
-	private MusicDAO dao;
+	private ExhibitionDAO dao;
 
-	@GetMapping("/music/list_react")
-	public List<Music> musicListData() {
-		List<Music> list = dao.musicMainData();
+	@GetMapping("/exhibition/list_react")
+	public List<Exhibition> exhibitionListData() {
+		List<Exhibition> list = dao.exhibitionMainData();
 
 		return list;
 	}
 
-	@GetMapping("/music/find_react")
-	public Map musicFindData(int page, String title) {
+	@GetMapping("/exhibition/find_react")
+	public Map exhibitionFindData(int page, String ename) {
 		int rowSize=20;
 		int start=(rowSize*page)-rowSize;
-		List<Music> list=dao.musicFindData(start, title);
+		List<Exhibition> list=dao.exhibitionFindData(start, ename);
 		Map map=new HashMap();
-		int totalpage=dao.musicFindTotalPage(title);
+		int totalpage=dao.exhibitionFindTotalPage(ename);
 		final int BLOCK=10;
 		int startPage=((page-1)/BLOCK*BLOCK)+1;
 		int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
@@ -47,9 +47,9 @@ public class MusicRestController {
 		return map;
 	}
 
-	@GetMapping("music/find_total_react")
-	public String musicFindTotalPage(String title) {
-		int total=dao.musicFindTotalPage(title);
+	@GetMapping("exhibition/find_total_react")
+	public String exhibitionFindTotalPage(String ename) {
+		int total=dao.exhibitionFindTotalPage(ename);
 		return String.valueOf(total);
 	}
 }
