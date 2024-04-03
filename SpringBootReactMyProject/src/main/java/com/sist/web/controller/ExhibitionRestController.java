@@ -27,10 +27,11 @@ public class ExhibitionRestController {
 
 	@GetMapping("/exhibition/find_react")
 	public Map exhibitionFindData(int page, String ename) {
-		int rowSize=20;
+		int rowSize=12;
 		int start=(rowSize*page)-rowSize;
 		List<Exhibition> list=dao.exhibitionFindData(start, ename);
 		Map map=new HashMap();
+		int count=(int)dao.count();
 		int totalpage=dao.exhibitionFindTotalPage(ename);
 		final int BLOCK=10;
 		int startPage=((page-1)/BLOCK*BLOCK)+1;
@@ -42,14 +43,27 @@ public class ExhibitionRestController {
 		map.put("totalpage", totalpage);
 		map.put("startPage", startPage);
 		map.put("endPage", endPage);
+		map.put("count", count);
 		map.put("list", list);
 
 		return map;
 	}
 
-	@GetMapping("exhibition/find_total_react")
+	@GetMapping("/exhibition/find_total_react")
 	public String exhibitionFindTotalPage(String ename) {
 		int total=dao.exhibitionFindTotalPage(ename);
 		return String.valueOf(total);
+	}
+	
+	@GetMapping("/exhibition/detail_react")
+	public Map exhibitionDetail(int eno) {
+		Exhibition vo=dao.findByEno(eno);
+		
+		Map map=new HashMap();
+		List<Exhibition> list=dao.exhibitionRandData();
+		
+		map.put("list", list);
+		map.put("vo", vo);
+		return map;
 	}
 }

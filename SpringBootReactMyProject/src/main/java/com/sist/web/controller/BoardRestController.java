@@ -22,9 +22,7 @@ public class BoardRestController {
 	public Map BoardList(int page) {
 		int rowSize=12;
 		int start=(rowSize*page)-rowSize;
-		
 		List<Board> list=dao.boardListData(start);
-		
 		Map map=new HashMap();
 		int totalpage=dao.boardListTotalPage();
 		final int BLOCK=10;

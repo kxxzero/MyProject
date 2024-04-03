@@ -31,6 +31,7 @@ public class MusicRestController {
 		int start=(rowSize*page)-rowSize;
 		List<Music> list=dao.musicFindData(start, title);
 		Map map=new HashMap();
+		int count=(int)dao.count();
 		int totalpage=dao.musicFindTotalPage(title);
 		final int BLOCK=10;
 		int startPage=((page-1)/BLOCK*BLOCK)+1;
@@ -42,12 +43,13 @@ public class MusicRestController {
 		map.put("totalpage", totalpage);
 		map.put("startPage", startPage);
 		map.put("endPage", endPage);
+		map.put("count", count);
 		map.put("list", list);
 
 		return map;
 	}
 
-	@GetMapping("music/find_total_react")
+	@GetMapping("/music/find_total_react")
 	public String musicFindTotalPage(String title) {
 		int total=dao.musicFindTotalPage(title);
 		return String.valueOf(total);

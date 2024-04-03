@@ -27,10 +27,11 @@ public class MovieRestController {
 
 	@GetMapping("/movie/find_react")
 	public Map movieFindData(int page, String subject) {
-		int rowSize=20;
+		int rowSize=12;
 		int start=(rowSize*page)-rowSize;
 		List<Movie> list=dao.movieFindData(start, subject);
 		Map map=new HashMap();
+		int count=(int)dao.count();
 		int totalpage=dao.movieFindTotalPage(subject);
 		final int BLOCK=10;
 		int startPage=((page-1)/BLOCK*BLOCK)+1;
@@ -42,14 +43,27 @@ public class MovieRestController {
 		map.put("totalpage", totalpage);
 		map.put("startPage", startPage);
 		map.put("endPage", endPage);
-		map.put("list", list);
+		map.put("count", count);
+		map.put("list", list);		
 
 		return map;
 	}
 
-	@GetMapping("movie/find_total_react")
+	@GetMapping("/movie/find_total_react")
 	public String movieFindTotalPage(String subject) {
 		int total=dao.movieFindTotalPage(subject);
 		return String.valueOf(total);
+	}
+	
+	@GetMapping("/movie/detail_react")
+	public Map movieDetail(int no) {
+		Movie vo=dao.findByNo(no);
+		
+		Map map=new HashMap();
+		List<Movie> list=dao.movieRandData();
+		
+		map.put("list", list);
+		map.put("vo", vo);
+		return map;
 	}
 }
