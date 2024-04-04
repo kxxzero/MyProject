@@ -76,7 +76,6 @@
 		    <artifactId>jsoup</artifactId>
 		    <version>1.17.2</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
 		<dependency>
 		    <groupId>com.googlecode.json-simple</groupId>
 		    <artifactId>json-simple</artifactId>

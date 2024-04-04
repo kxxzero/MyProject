@@ -40,4 +40,12 @@ public class BoardRestController {
 		
 		return map;
 	}
+	
+	@GetMapping("/board/detail_react")
+	public Board BoardDetail(int no) {
+		Board vo=new Board();
+		vo=dao.findByNo(no);
+		
+		return vo;
+	}
 }

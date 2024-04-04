@@ -21,6 +21,7 @@ public class NewsRestController {
 	@GetMapping("/news/list_react")
 	public List<News> newListData(String fd) {
 		List<News> list=new ArrayList<News>();
+		list=nm.newsFind(fd);
 	
 		return list;
 	}
