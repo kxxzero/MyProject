@@ -20,7 +20,7 @@ public class BoardRestController {
 	
 	@GetMapping("/board/list_react")
 	public Map BoardList(int page) {
-		int rowSize=12;
+		int rowSize=9;
 		int start=(rowSize*page)-rowSize;
 		List<Board> list=dao.boardListData(start);
 		Map map=new HashMap();
@@ -43,9 +43,57 @@ public class BoardRestController {
 	
 	@GetMapping("/board/detail_react")
 	public Board BoardDetail(int no) {
-		Board vo=new Board();
-		vo=dao.findByNo(no);
+		Board vo=dao.findByNo(no);
+		vo.setHit(vo.getHit()+1);
+		dao.save(vo);
+		vo=dao.findByNo(no);	
 		
 		return vo;
+	}
+	
+	@GetMapping("/board/insert_react")
+	public String boardInsert(Board vo) {
+		String result="";
+		try {
+			result="yes";
+			dao.save(vo);
+		} catch(Exception ex) {
+			System.out.println(ex.getMessage());
+			result="no";
+		}
+		return result;
+	}
+	
+	@GetMapping("/board/update_react")
+	public Board boardUpdate(int no) {
+		Board vo=dao.findByNo(no);
+		return vo;
+	}
+	
+	@GetMapping("/board/update_ok_react")
+	public String boardUpdateOk(Board vo) {
+		Board updateVO=dao.findByNo(vo.getNo());
+		String result="";
+		if(vo.getPwd().equals(updateVO.getPwd())) {
+			result="yes";
+			vo.setHit(updateVO.getHit());
+			dao.save(vo);
+		} else {
+			result="no";
+		}		
+		return result;
+	}
+	
+	@GetMapping("/board/delete_react")
+	public String boardDelete(int no, String pwd) {
+		String result="";
+		Board vo=dao.findByNo(no);
+		if(vo.getPwd().equals(pwd)) {
+			result="yes";
+			dao.delete(vo);
+		} else {
+			result="no";
+		}
+		return result;
 	}
 }
